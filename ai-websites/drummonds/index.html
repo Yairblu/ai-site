@@ -310,6 +310,14 @@
       padding: 2.5rem;
       box-shadow: 0 4px 24px rgba(0,0,0,0.06);
     }
+    .about-card-photo {
+      width: 100%;
+      max-width: 180px;
+      height: auto;
+      display: block;
+      margin-bottom: 1.4rem;
+      filter: grayscale(20%);
+    }
     .about-card-title {
       font-family: var(--font-serif);
       font-size: 1.1rem;
@@ -725,8 +733,15 @@
     </div>
     <div>
       <div class="about-card">
+        <!-- Photo sourced from drummonds.gi/images/hugh.jpg — replace with higher-resolution image if one becomes available -->
+        <img
+          src="https://www.drummonds.gi/images/hugh.jpg"
+          alt="Hugh Drummond, Founder of Drummonds."
+          class="about-card-photo"
+          loading="lazy"
+        />
         <p class="about-card-title">Hugh Drummond — Founder &amp; Principal</p>
-        <p>With practice established in Gibraltar since 1991, Hugh Drummond brings deep familiarity with the regulatory and tax environment in the territory, as well as extensive experience in cross-border matters involving the United Kingdom.</p>
+        <p>Hugh Drummond trained in London with a top-three firm of accountants before founding Drummonds in Gibraltar in 1991. With practice established here for over three decades, he brings deep familiarity with the regulatory and tax environment in the territory, as well as extensive experience in cross-border matters involving the United Kingdom.</p>
         <p>Clients work directly with Hugh throughout their engagement — from initial instruction to completion — ensuring continuity, accountability, and a consistently high standard of advice.</p>
         <hr class="about-card-rule" />
         <div class="alliance-badge">

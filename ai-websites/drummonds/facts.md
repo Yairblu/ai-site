@@ -20,6 +20,7 @@
 
 ## People
 - **Hugh Drummond** — Founder and principal. Works personally with each client.
+- Before founding Drummonds in 1991, trained in London with a top-three firm of accountants. (Confirmed — multiple independent sources.)
 
 ## Project Status
 - **Site status:** Being built
