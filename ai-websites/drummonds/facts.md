@@ -27,6 +27,11 @@
 - **Price quoted:** Not yet sent
 - **Formspree endpoint:** https://formspree.io/f/xzdqqdwk
 
+## Outreach Status (updated 2026-06-17)
+- Founder contacted directly by phone. He stated low interest in updating the website and said not to expect a reply.
+- Attempted to send the demo link via drummonds.gi/contact.php — form returns an error and did not submit.
+- Not pursuing further.
+
 ## Notes
 - Direct partner involvement is a selling point — do not downplay it
 - Do not invent: statistics, client counts, additional staff, extra certifications, or any detail not listed here
