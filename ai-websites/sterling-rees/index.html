@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sterling Rees – Accountants Gibraltar</title>
+  <meta name="description" content="Sterling Rees Limited offers tax accountancy, VAT, cashflow, and relocation advice for individuals and businesses in Gibraltar. Affordable. Local. Professional." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue:        #1A6FA6;
+      --blue-dark:   #145A88;
+      --blue-light:  #E8F4FB;
+      --amber:       #E8923A;
+      --amber-dark:  #C97A2D;
+      --charcoal:    #2D3748;
+      --grey-mid:    #5A6779;
+      --grey-light:  #F4F6F8;
+      --rule:        #DDE2E8;
+      --white:       #FFFFFF;
+
+      --font: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+      --max-w: 1080px;
+      --section-pad: 5rem 1.5rem;
+
+      /* Animation durations — overridden to 0 for reduced-motion users */
+      --dur-fade: 0.55s;
+      --dur-hero: 12s;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      :root {
+        --dur-fade: 0s;
+        --dur-hero: 0s;
+      }
+      .reveal { opacity: 1 !important; transform: none !important; }
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      font-size: 1rem;
+      line-height: 1.75;
+      color: var(--charcoal);
+      background: var(--white);
+    }
+
+    /* ── Utility ── */
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 0.85rem;
+    }
+
+    .section-heading {
+      font-size: clamp(1.55rem, 3vw, 2.1rem);
+      font-weight: 700;
+      color: var(--charcoal);
+      line-height: 1.25;
+      margin-bottom: 1rem;
+    }
+
+    .section-heading em {
+      font-style: normal;
+      color: var(--blue);
+    }
+
+    .lead {
+      font-size: 1.05rem;
+      color: var(--grey-mid);
+      line-height: 1.8;
+      max-width: 580px;
+    }
+
+    .divider {
+      width: 2.5rem;
+      height: 3px;
+      background: var(--amber);
+      border-radius: 2px;
+      margin: 1.1rem 0 1.75rem;
+    }
+
+    /* ── Reveal animation ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity var(--dur-fade) ease, transform var(--dur-fade) ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ── NAV ── */
+    #site-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.25s, box-shadow 0.25s;
+    }
+    #site-nav.scrolled {
+      border-color: var(--rule);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    }
+
+    .nav-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-wordmark {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+    .nav-wordmark span { color: var(--blue); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--grey-mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--blue); }
+
+    .nav-cta {
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 0.5rem 1.2rem;
+      background: var(--blue);
+      color: var(--white) !important;
+      border-radius: 3px;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--blue-dark) !important; color: var(--white) !important; }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--charcoal);
+      border-radius: 1px;
+      transition: transform 0.25s, opacity 0.25s;
+    }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 6rem 1.5rem 4rem;
+      position: relative;
+      overflow: hidden;
+      background: var(--blue);
+    }
+
+    /* Animated gradient background */
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: -50%;
+      background: radial-gradient(ellipse at 20% 50%, #1E80BE 0%, transparent 55%),
+                  radial-gradient(ellipse at 80% 20%, #0E5A8A 0%, transparent 50%),
+                  radial-gradient(ellipse at 60% 80%, #1A6FA6 0%, transparent 50%);
+      animation: heroShift var(--dur-hero) ease-in-out infinite alternate;
+      opacity: 0.7;
+    }
+
+    @keyframes heroShift {
+      0%   { transform: translate(0, 0) scale(1); }
+      33%  { transform: translate(3%, -2%) scale(1.04); }
+      66%  { transform: translate(-2%, 3%) scale(0.98); }
+      100% { transform: translate(2%, 1%) scale(1.02); }
+    }
+
+    /* Subtle grid pattern overlay */
+    #hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 1.5rem;
+    }
+    .hero-badge::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--amber);
+      border-radius: 1px;
+    }
+
+    .hero-title {
+      font-size: clamp(2.2rem, 5.5vw, 3.6rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      max-width: 660px;
+      margin-bottom: 1.5rem;
+    }
+    .hero-title span {
+      color: rgba(255,255,255,0.55);
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.1rem);
+      color: rgba(255,255,255,0.75);
+      max-width: 500px;
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 2.5rem;
+    }
+    .hero-pill {
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 0.4rem 0.9rem;
+      border: 1px solid rgba(255,255,255,0.25);
+      color: rgba(255,255,255,0.85);
+      border-radius: 100px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 0.85rem 1.9rem;
+      background: var(--amber);
+      color: var(--white);
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      border: 2px solid var(--amber);
+      border-radius: 3px;
+      transition: background 0.2s, color 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover {
+      background: var(--amber-dark);
+      border-color: var(--amber-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost {
+      display: inline-block;
+      padding: 0.85rem 1.9rem;
+      background: transparent;
+      color: rgba(255,255,255,0.85);
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-radius: 3px;
+      transition: border-color 0.2s, color 0.2s, transform 0.15s;
+    }
+    .btn-ghost:hover {
+      border-color: rgba(255,255,255,0.7);
+      color: var(--white);
+      transform: translateY(-1px);
+    }
+
+    /* ── PHILOSOPHY ── */
+    #philosophy {
+      padding: var(--section-pad);
+      background: var(--white);
+    }
+
+    .philosophy-grid {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .philosophy-text p {
+      color: var(--grey-mid);
+      margin-bottom: 1.1rem;
+    }
+    .philosophy-text p:last-child { margin-bottom: 0; }
+    .philosophy-text strong { color: var(--charcoal); }
+
+    .pillars {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .pillar {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.1rem;
+      padding: 1.4rem 1.5rem;
+      background: var(--grey-light);
+      border-left: 3px solid var(--blue);
+      border-radius: 0 4px 4px 0;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .pillar:hover {
+      background: var(--blue-light);
+      border-color: var(--amber);
+    }
+
+    .pillar-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--blue);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--white);
+    }
+    .pillar-icon svg { width: 16px; height: 16px; }
+
+    .pillar-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: 0.2rem;
+    }
+    .pillar-desc {
+      font-size: 0.88rem;
+      color: var(--grey-mid);
+      line-height: 1.6;
+    }
+
+    /* ── RELOCATION ── */
+    #relocation {
+      padding: var(--section-pad);
+      background: var(--blue);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #relocation::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 350px;
+      height: 350px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.04);
+      pointer-events: none;
+    }
+
+    .relocation-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+
+    .relocation-inner .tag { color: rgba(255,255,255,0.6); }
+    .relocation-inner .section-heading { color: var(--white); }
+    .relocation-inner .section-heading em { color: rgba(255,255,255,0.6); }
+    .relocation-inner .divider { background: var(--amber); }
+
+    .relocation-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      margin-top: 0;
+    }
+
+    .relocation-text p {
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 1rem;
+      font-size: 0.97rem;
+    }
+    .relocation-text p:last-child { margin-bottom: 0; }
+
+    .jurisdictions {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .jurisdiction-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 6px;
+      padding: 1.4rem 1.5rem;
+      transition: background 0.2s;
+    }
+    .jurisdiction-card:hover {
+      background: rgba(255,255,255,0.13);
+    }
+
+    .jc-flag {
+      font-size: 1.4rem;
+      margin-bottom: 0.4rem;
+      line-height: 1;
+    }
+    .jc-name {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.3rem;
+    }
+    .jc-note {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.5;
+    }
+
+    /* ── SERVICES ── */
+    #services {
+      padding: var(--section-pad);
+      background: var(--grey-light);
+    }
+
+    .services-header {
+      max-width: var(--max-w);
+      margin: 0 auto 3rem;
+    }
+
+    .services-grid {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+    }
+
+    .service-card {
+      background: var(--white);
+      border-radius: 6px;
+      padding: 2rem;
+      border: 1px solid var(--rule);
+      transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+    }
+    .service-card:hover {
+      box-shadow: 0 8px 28px rgba(26,111,166,0.1);
+      transform: translateY(-3px);
+      border-color: var(--blue);
+    }
+
+    .service-icon-wrap {
+      width: 44px;
+      height: 44px;
+      background: var(--blue-light);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.1rem;
+      color: var(--blue);
+      transition: background 0.2s;
+    }
+    .service-card:hover .service-icon-wrap {
+      background: var(--blue);
+      color: var(--white);
+    }
+    .service-icon-wrap svg { width: 20px; height: 20px; }
+
+    .service-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: 0.5rem;
+    }
+
+    .service-desc {
+      font-size: 0.88rem;
+      color: var(--grey-mid);
+      line-height: 1.7;
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      padding: var(--section-pad);
+      background: var(--white);
+    }
+
+    .contact-grid {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .contact-info .tag { color: var(--blue); }
+
+    .contact-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+      margin-bottom: 1.35rem;
+      font-size: 0.93rem;
+      color: var(--grey-mid);
+      line-height: 1.6;
+    }
+    .contact-detail svg {
+      width: 18px;
+      height: 18px;
+      color: var(--blue);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .contact-detail a {
+      color: var(--grey-mid);
+      text-decoration: none;
+    }
+    .contact-detail a:hover { color: var(--blue); }
+
+    /* Form */
+    .contact-form-wrap {
+      background: var(--grey-light);
+      border-radius: 8px;
+      padding: 2.5rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .form-group { margin-bottom: 1.1rem; }
+    .form-group label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      margin-bottom: 0.45rem;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.7rem 0.95rem;
+      font-family: var(--font);
+      font-size: 0.95rem;
+      color: var(--charcoal);
+      background: var(--white);
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      appearance: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(26,111,166,0.1);
+    }
+    .form-group textarea { height: 120px; resize: vertical; }
+
+    .form-select-wrap { position: relative; }
+    .form-select-wrap::after {
+      content: '';
+      position: absolute;
+      right: 12px; top: 50%;
+      transform: translateY(-50%);
+      border: 5px solid transparent;
+      border-top-color: var(--grey-mid);
+      pointer-events: none;
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 0.875rem;
+      background: var(--blue);
+      color: var(--white);
+      font-family: var(--font);
+      font-size: 0.9rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-submit:hover {
+      background: var(--blue-dark);
+      transform: translateY(-1px);
+    }
+    .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+    .form-note {
+      font-size: 0.78rem;
+      color: var(--grey-mid);
+      margin-top: 0.85rem;
+      line-height: 1.5;
+    }
+
+    .form-status {
+      margin-top: 0.85rem;
+      font-size: 0.88rem;
+      font-weight: 600;
+      display: none;
+    }
+    .form-status.success { color: #1F7A3E; display: block; }
+    .form-status.error   { color: #B91C1C; display: block; }
+
+    /* ── FOOTER ── */
+    #footer {
+      background: var(--charcoal);
+      padding: 2rem 1.5rem;
+    }
+    .footer-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+    .footer-wordmark {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.55);
+    }
+    .footer-wordmark span { color: var(--blue); }
+    .footer-copy {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.3);
+    }
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+    .footer-links a {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.3);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--blue); }
+
+    /* ── SCROLL TOP ── */
+    #scroll-top {
+      position: fixed;
+      bottom: 1.75rem; right: 1.75rem;
+      width: 40px; height: 40px;
+      background: var(--blue);
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s, transform 0.2s;
+      z-index: 50;
+    }
+    #scroll-top.visible { opacity: 1; pointer-events: auto; }
+    #scroll-top:hover { transform: translateY(-2px); }
+    #scroll-top svg { width: 16px; height: 16px; color: var(--white); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 860px) {
+      .philosophy-grid,
+      .relocation-grid,
+      .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .services-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      :root { --section-pad: 3.5rem 1.25rem; }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        gap: 0;
+        position: fixed;
+        top: 60px; left: 0; right: 0;
+        background: var(--white);
+        border-bottom: 1px solid var(--rule);
+        padding: 0.5rem 0 1rem;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      }
+      .nav-links.open { display: flex; }
+      .nav-links li a {
+        display: block;
+        padding: 0.7rem 1.5rem;
+      }
+      .nav-toggle { display: flex; }
+
+      .form-row { grid-template-columns: 1fr; }
+      .contact-form-wrap { padding: 1.75rem 1.25rem; }
+
+      .footer-inner { flex-direction: column; align-items: center; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════ NAV ═══════════ -->
+<nav id="site-nav" role="navigation" aria-label="Primary">
+  <div class="nav-inner">
+    <a class="nav-wordmark" href="#hero">Sterling <span>Rees</span></a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#philosophy">About</a></li>
+      <li><a href="#relocation">Relocation</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
+    </ul>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section id="hero">
+  <div class="hero-content">
+    <p class="hero-badge">Accountants · Gibraltar</p>
+    <h1 class="hero-title">We listen.<br>We solve.<br><span>We educate.</span></h1>
+    <p class="hero-sub">Straightforward, professional accounting advice — for individuals, local businesses, and those making Gibraltar home.</p>
+    <div class="hero-pills">
+      <span class="hero-pill">Affordable</span>
+      <span class="hero-pill">Local</span>
+      <span class="hero-pill">Professional</span>
+    </div>
+    <div class="hero-ctas">
+      <a href="#services" class="btn-primary">Our Services</a>
+      <a href="#contact" class="btn-ghost">Talk to Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ PHILOSOPHY ═══════════ -->
+<section id="philosophy">
+  <div class="philosophy-grid">
+
+    <div class="philosophy-text reveal">
+      <span class="tag">How We Work</span>
+      <h2 class="section-heading">A real <em>partnership</em>,<br>not a one-size solution</h2>
+      <div class="divider" aria-hidden="true"></div>
+      <p>Sterling Rees is an established practice with roots in the UK and a dedicated Gibraltar office serving clients locally and internationally. We work with individuals, growing businesses, and anyone navigating a move between Gibraltar, the UK, or Spain.</p>
+      <p>We don't believe in off-the-shelf advice. Every client's situation is different, and we take the time to understand yours properly before recommending anything. We work <strong>hand in glove</strong> with our clients — closely, directly, and on your terms.</p>
+      <p>Our aim is simple: build a bespoke, cost-efficient solution that fits your actual circumstances, and make sure you understand it fully. We're here to inform, not to mystify.</p>
+    </div>
+
+    <div class="pillars">
+      <div class="pillar reveal reveal-delay-1">
+        <div class="pillar-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" aria-hidden="true">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+        </div>
+        <div>
+          <p class="pillar-title">We Listen</p>
+          <p class="pillar-desc">Every engagement starts with understanding your situation properly — not jumping to conclusions or applying a template.</p>
+        </div>
+      </div>
+      <div class="pillar reveal reveal-delay-2">
+        <div class="pillar-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+            <line x1="12" y1="17" x2="12.01" y2="17"/>
+          </svg>
+        </div>
+        <div>
+          <p class="pillar-title">We Solve</p>
+          <p class="pillar-desc">We identify the most practical, cost-efficient route through your tax or compliance challenge — clearly and without jargon.</p>
+        </div>
+      </div>
+      <div class="pillar reveal reveal-delay-3">
+        <div class="pillar-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" aria-hidden="true">
+            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+          </svg>
+        </div>
+        <div>
+          <p class="pillar-title">We Educate</p>
+          <p class="pillar-desc">We make sure you understand what we're doing and why — so you're informed, confident, and never reliant on us for the basics.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════ RELOCATION ═══════════ -->
+<section id="relocation">
+  <div class="relocation-inner">
+    <div class="relocation-grid">
+
+      <div class="reveal">
+        <span class="tag">Specialist Expertise</span>
+        <h2 class="section-heading">Moving between<br>Gibraltar, <em>Spain</em> & the UK?</h2>
+        <div class="divider" aria-hidden="true"></div>
+        <div class="relocation-text">
+          <p>Relocating across these three jurisdictions is more complex than it might appear. Gibraltar largely follows UK tax legislation — but Spain operates an entirely different system, with its own rules on residency, foreign assets, and income from abroad.</p>
+          <p>Getting the transition right matters from day one. Whether you're an individual establishing residency, a business extending your footprint, or navigating obligations in more than one jurisdiction simultaneously — we know this territory well.</p>
+          <p>We advise on the tax implications of your move, help you meet your obligations in each jurisdiction, and make sure nothing falls through the gaps between systems.</p>
+        </div>
+      </div>
+
+      <div class="jurisdictions reveal reveal-delay-2">
+        <div class="jurisdiction-card">
+          <div class="jc-flag">🇬🇮</div>
+          <p class="jc-name">Gibraltar</p>
+          <p class="jc-note">Broadly follows UK tax legislation. Favourable environment for individuals and international businesses, with its own distinct rules on residency and income.</p>
+        </div>
+        <div class="jurisdiction-card">
+          <div class="jc-flag">🇪🇸</div>
+          <p class="jc-name">Spain</p>
+          <p class="jc-note">An entirely separate system. Residency triggers distinct obligations — including on worldwide income and foreign assets — that require careful planning.</p>
+        </div>
+        <div class="jurisdiction-card">
+          <div class="jc-flag">🇬🇧</div>
+          <p class="jc-name">United Kingdom</p>
+          <p class="jc-note">Ongoing UK tax obligations often follow individuals and businesses after a move. We coordinate Gibraltar and UK compliance so nothing is missed.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SERVICES ═══════════ -->
+<section id="services">
+  <div class="services-header reveal">
+    <span class="tag">What We Do</span>
+    <h2 class="section-heading">Our Services</h2>
+    <div class="divider" aria-hidden="true"></div>
+    <p class="lead">Practical accounting and tax services for individuals and businesses in Gibraltar — delivered without unnecessary complexity.</p>
+  </div>
+  <div class="services-grid">
+
+    <div class="service-card reveal reveal-delay-1">
+      <div class="service-icon-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+          <polyline points="14 2 14 8 20 8"/>
+          <line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
+          <polyline points="10 9 9 9 8 9"/>
+        </svg>
+      </div>
+      <h3 class="service-title">Tax Accountancy</h3>
+      <p class="service-desc">Personal and business tax compliance — returns, computations, and ongoing advisory for individuals and companies with Gibraltar tax obligations.</p>
+    </div>
+
+    <div class="service-card reveal reveal-delay-2">
+      <div class="service-icon-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <rect x="2" y="5" width="20" height="14" rx="2"/>
+          <line x1="2" y1="10" x2="22" y2="10"/>
+        </svg>
+      </div>
+      <h3 class="service-title">VAT Returns</h3>
+      <p class="service-desc">Preparation and submission of VAT returns, keeping your business compliant and your records in order throughout the year.</p>
+    </div>
+
+    <div class="service-card reveal reveal-delay-3">
+      <div class="service-icon-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+        </svg>
+      </div>
+      <h3 class="service-title">Cashflow Management</h3>
+      <p class="service-desc">Support with forecasting and managing cashflow — helping you stay on top of your position and plan ahead with confidence.</p>
+    </div>
+
+    <div class="service-card reveal reveal-delay-4">
+      <div class="service-icon-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <polyline points="9 11 12 14 22 4"/>
+          <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+        </svg>
+      </div>
+      <h3 class="service-title">Audit Support</h3>
+      <p class="service-desc">Preparation and assistance through the audit process — making it straightforward, thorough, and as painless as possible for your business.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════ CONTACT ═══════════ -->
+<section id="contact">
+  <div class="contact-grid">
+
+    <div class="contact-info reveal">
+      <span class="tag">Get in Touch</span>
+      <h2 class="section-heading">Let's talk</h2>
+      <div class="divider" aria-hidden="true"></div>
+      <p style="color:var(--grey-mid);font-size:0.95rem;margin-bottom:1.75rem;line-height:1.8;">
+        Whether you have a straightforward question or a complex situation across multiple jurisdictions, we're happy to have a no-pressure conversation about how we can help.
+      </p>
+
+      <div class="contact-detail">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+        </svg>
+        <address style="font-style:normal;">
+          Unit 1.02, 1st Floor<br>
+          World Trade Center<br>
+          6 Bayside Road<br>
+          Gibraltar GX11 1AA
+        </address>
+      </div>
+
+      <div class="contact-detail">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+          <polyline points="22,6 12,13 2,6"/>
+        </svg>
+        <a href="mailto:gibraltar@sterlingrees.gi">gibraltar@sterlingrees.gi</a>
+      </div>
+
+      <div class="contact-detail">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.42 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.13 6.13l.95-.86a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </svg>
+        <span>[PHONE NUMBER TO CONFIRM]</span>
+      </div>
+    </div>
+
+    <div class="contact-form-wrap reveal reveal-delay-2">
+      <!-- Contact form — Formspree. Replace [YOUR_FORM_ID] with the ID from formspree.io -->
+      <form id="enquiry-form" action="https://formspree.io/f/[YOUR_FORM_ID]" method="POST" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="f-name">Name</label>
+            <input type="text" id="f-name" name="name" autocomplete="name" required placeholder="Your name" />
+          </div>
+          <div class="form-group">
+            <label for="f-email">Email</label>
+            <input type="email" id="f-email" name="email" autocomplete="email" required placeholder="you@example.com" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="f-subject">Area of enquiry</label>
+          <div class="form-select-wrap">
+            <select id="f-subject" name="subject">
+              <option value="">Please select…</option>
+              <option>Tax accountancy</option>
+              <option>VAT returns</option>
+              <option>Cashflow management</option>
+              <option>Audit support</option>
+              <option>Gibraltar / Spain / UK relocation advice</option>
+              <option>General enquiry</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="f-message">Message</label>
+          <textarea id="f-message" name="message" required placeholder="Briefly describe your situation or question…"></textarea>
+        </div>
+        <button type="submit" class="btn-submit" id="submit-btn">Send Message</button>
+        <p class="form-note">Your details will only be used to respond to this enquiry and will not be shared with third parties.</p>
+        <p class="form-status" id="form-status" role="alert"></p>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer id="footer">
+  <div class="footer-inner">
+    <div class="footer-wordmark">Sterling <span>Rees</span> Gibraltar</div>
+    <p class="footer-copy">&copy; <span id="year"></span> Sterling Rees Limited. Company No. 117538. All rights reserved.</p>
+    <nav class="footer-links" aria-label="Footer">
+      <a href="#philosophy">About</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</footer>
+
+<button id="scroll-top" aria-label="Scroll to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+    <polyline points="18 15 12 9 6 15"/>
+  </svg>
+</button>
+
+<!-- ═══════════ JS ═══════════ -->
+<script>
+  /* ── Year ── */
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* ── Nav scroll state ── */
+  const nav = document.getElementById('site-nav');
+  const scrollTopBtn = document.getElementById('scroll-top');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 30);
+    scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
+  }, { passive: true });
+
+  /* ── Mobile nav ── */
+  const toggle = document.getElementById('nav-toggle');
+  const links  = document.getElementById('nav-links');
+  toggle.addEventListener('click', () => {
+    const open = links.classList.toggle('open');
+    toggle.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', open);
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    links.classList.remove('open');
+    toggle.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }));
+
+  /* ── Scroll to top ── */
+  scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  /* ── Scroll reveal (respects prefers-reduced-motion via CSS) ── */
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => observer.observe(el));
+
+  /* ── Contact form — Formspree ── */
+  const form      = document.getElementById('enquiry-form');
+  const submitBtn = document.getElementById('submit-btn');
+  const statusEl  = document.getElementById('form-status');
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const name    = document.getElementById('f-name').value.trim();
+    const email   = document.getElementById('f-email').value.trim();
+    const message = document.getElementById('f-message').value.trim();
+
+    statusEl.className = 'form-status';
+    statusEl.textContent = '';
+
+    if (!name || !email || !message) {
+      statusEl.className = 'form-status error';
+      statusEl.textContent = 'Please fill in your name, email, and message before sending.';
+      return;
+    }
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+      statusEl.className = 'form-status error';
+      statusEl.textContent = 'Please enter a valid email address.';
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' }
+      });
+      if (res.ok) {
+        statusEl.className = 'form-status success';
+        statusEl.textContent = 'Message sent — thank you. We\'ll be in touch shortly.';
+        form.reset();
+        submitBtn.textContent = 'Sent';
+      } else {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || 'Submission failed');
+      }
+    } catch {
+      statusEl.className = 'form-status error';
+      statusEl.textContent = 'Something went wrong. Please email us directly at gibraltar@sterlingrees.gi.';
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send Message';
+    }
+  });
+</script>
+</body>
+</html>
